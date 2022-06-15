@@ -8,5 +8,10 @@ So far I have made the following requirements:
   - Graphical interface in the console
   - Encapsulating the attributes
   - Constructors
+  - Game Logic
+  - Loop Game
+  - Players Creation
+  - Moves between players
+
 
 
