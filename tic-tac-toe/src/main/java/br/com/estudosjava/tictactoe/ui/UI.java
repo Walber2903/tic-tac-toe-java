@@ -18,7 +18,7 @@ public class UI {
 	
 	public static void printGameTitle() {
 		printText("=================");
-		printText("| JOGO DA VELHA |");
+		printText("|  TIC TAC TOE   |");
 		printText("=================");
 		printNewLine();
 	}

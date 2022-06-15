@@ -51,11 +51,77 @@ public class Board {
 		int i = move.getI();
 		int j = move.getJ();
 		
+		//TODO validate the moves
+		
 		matrix[i][j] = player.getSymbol();
 		
-		// TODO Check if the player won with the movie
+		return checkRows(player) || checkCols(player) || checkDiagonal1to9(player) || checkDiagonal6to3(player);
+	}
+	
+	private boolean checkRow(int i, Player player) {
+		char symbol = player.getSymbol();
+		
+		for (int j = 0; j < Constants.BOARD_SIZE; j++) {
+			if(matrix [i][j] != symbol) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean checkRows(Player player) {
+		for(int i = 0; i < Constants.BOARD_SIZE; i++) {
+			if(checkRow(i, player)) {
+				return true;
+			}
+		}
 		
 		return false;
+	}
+	
+	private boolean checkCol(int j, Player player) {
+		char symbol = player.getSymbol();
+		
+		for (int i = 0; i < Constants.BOARD_SIZE; i++) {
+			if(matrix [i][j] != symbol) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean checkCols(Player player) {
+		for(int j = 0; j < Constants.BOARD_SIZE; j++) {
+			if(checkCol(j, player)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	private boolean checkDiagonal1to9(Player player) {
+		char symbol = player.getSymbol();
+		
+		for(int i = 0; i< Constants.BOARD_SIZE; i++) {
+			if(matrix[i][i] != symbol) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean checkDiagonal6to3(Player player) {
+		char symbol = player.getSymbol();
+		
+		int lastLine = Constants.BOARD_SIZE - 1;
+		
+		for(int i = lastLine, j = 0; i >= 0; i--, j++) {
+			if(matrix[i][j] != symbol) {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 }

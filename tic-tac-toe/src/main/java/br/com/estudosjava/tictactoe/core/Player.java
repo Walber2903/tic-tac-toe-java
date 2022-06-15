@@ -1,11 +1,29 @@
 package br.com.estudosjava.tictactoe.core;
 
+import br.com.estudosjava.tictactoe.ui.UI;
+
 public class Player {
 
 	private String name;
 	private Board board;
 	private char symbol;
 	
+	public Player(String name, Board board, char symbol) {
+		this.name = name;
+		this.board = board;
+		this.symbol = symbol;
+	}
+	
+	private Move inputMove() {
+		String moveStr = UI.readInput("Player '" + name + "' => ");
+		return new Move(moveStr);	
+	}
+	
+	public boolean play() {
+		Move move = inputMove();
+		return board.play(this, move);
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -16,14 +34,6 @@ public class Player {
 
 	public char getSymbol() {
 		return symbol;
-	}
-
-	public Move inputMove() {
-		return null;
-	}
-	
-	public void play() {
-		
 	}
 	
 }
