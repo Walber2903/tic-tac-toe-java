@@ -23,7 +23,13 @@ public class Game {
 		while(!gameEnded) {
 			board.print();
 			
-			boolean sequenceWin = currentPlayer.play();
+			boolean sequenceWin;
+			try {
+				sequenceWin = currentPlayer.play();
+			} catch (InvalidMoveException e) {
+				UI.printText("Erro: " + e.getMessage());
+				continue;
+			}
 			
 			if(sequenceWin) {
 				gameEnded = true;

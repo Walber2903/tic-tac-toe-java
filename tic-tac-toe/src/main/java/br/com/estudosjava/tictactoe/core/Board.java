@@ -47,11 +47,18 @@ public class Board {
 		return true;
 	}
 	
-	public boolean play(Player player, Move move) {
+	public boolean play(Player player, Move move) throws InvalidMoveException {
 		int i = move.getI();
 		int j = move.getJ();
 		
 		//TODO validate the moves
+		if (i < 0 || j < 0 || i >= Constants.BOARD_SIZE || j >= Constants.BOARD_SIZE) {
+			throw new InvalidMoveException("This range is invalid.");
+		}
+		
+		if (matrix[i][j] != ' ') {
+			throw new InvalidMoveException("This move has already been made.");
+		}
 		
 		matrix[i][j] = player.getSymbol();
 		
