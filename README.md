@@ -12,6 +12,5 @@ So far I have made the following requirements:
   - Loop Game
   - Players Creation
   - Moves between players
-
-
-
+  - Validating plays
+  - Dealing with errors
